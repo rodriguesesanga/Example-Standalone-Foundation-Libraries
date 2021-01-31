@@ -23,8 +23,9 @@ def failed_message(link_gif){
 try{
  timestamps{
   node ('public'){
-    stage ('Node Informations'){
+    stage ('CheckOut'){
         nodeInfo()
+        checkout([$class: 'GitSCM', branches: [[name: 'feature1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries.git']]])
     }
     stage('Running Files') {
         if (isUnix()){
