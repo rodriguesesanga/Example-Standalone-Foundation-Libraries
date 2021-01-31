@@ -28,12 +28,9 @@ try{
     }
     stage('Running Files') {
         if (isUnix()){
-                sh label: '', script: '''
-                        cd $WORKSPACE
-                        ls'''
+                sh 'ls'
         }else{
-                bat label: '', script: '''
-                        dir'''
+                bat 'dir'
         }
     }
   }
