@@ -31,7 +31,8 @@ try{
       if (isUnix()){
         sh label: '', script: '''
                   ls
-                  cat README.md'''
+		  content=$(curl -L google.com)
+		  echo $content'''
       }else{
         bat label: '', script: '''
                    dir
@@ -43,17 +44,5 @@ try{
 }catch (e) {
   // In this case, the build failed
   currentBuild.result = "FAILURE"
-  if (Node_ID=='SRV2BULD124'){
-    failed_message('https://media.giphy.com/media/h8ncU2Ps6b2zS/giphy.gif')
-  }else{
-      if (Node_ID=='SRV2BULD226'){
-          failed_message('https://media.giphy.com/media/3oKIPs1EVbbNZYq7EA/giphy.gif')
-      }else{
-          if (Node_ID=='SRV4BULD117'){
-                failed_message('https://media.giphy.com/media/TqiwHbFBaZ4ti/giphy.gif')
-          }else{
-              failed_message('https://media.giphy.com/media/iVDo6InQKyW8o/giphy.gif')
-          }
-      }
-  }
+  failed_message('https://media.giphy.com/media/h8ncU2Ps6b2zS/giphy.gif')
 }
