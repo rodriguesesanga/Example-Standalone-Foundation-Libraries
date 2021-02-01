@@ -33,7 +33,7 @@ try{
                   ls
                   cat README.rst'''
       }else{
-        bat label;'', script: '''
+        bat label: '', script: '''
                    dir
                    type README.rst'''
       }
