@@ -28,11 +28,15 @@ try{
         checkout([$class: 'GitSCM', branches: [[name: 'feature1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries.git']]])
     }
     stage('Running Files') {
-        if (isUnix()){
-                sh 'ls'
-        }else{
-                bat 'dir'
-        }
+      if (isUnix()){
+        sh label: '', script: '''
+                  ls
+                  cat README.rst'''
+      }else{
+        bat label;'', script: '''
+                   dir
+                   type README.rst'''
+      }
     }
   }
  }
