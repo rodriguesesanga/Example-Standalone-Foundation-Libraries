@@ -31,7 +31,7 @@ try{
       if (isUnix()){
         sh label: '', script: '''
                   ls
-		  content=$(curl -L google.com)
+		  content=$(curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md)
 		  echo $content'''
       }else{
         bat label: '', script: '''
