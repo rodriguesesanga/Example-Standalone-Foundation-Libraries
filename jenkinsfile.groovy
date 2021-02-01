@@ -8,7 +8,7 @@ def failed_message(link_gif){
   <body style='font-family: sans-serif;'>
   <h1 align="center">&#x1F6A8; &#x1F6A8; &#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8;&#x1F6A8;&#x1F6A8 </h1>
   </br>
-  <h2 align="center">This failure comes from the running of that JOB on the label:  <i style="color: blue">${Node_ID}</i><h2>
+  <h2 align="center">This failure comes from the running of that JOB on the label:  <i style="color: blue">Myparams</i><h2>
   <p align="center"><img src=${link_gif} height="200" width="400"></p>
   <p style="color: red" align="center"><strong>Click on the link below to find out cause and try to fix it </strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
@@ -31,11 +31,11 @@ try{
       if (isUnix()){
         sh label: '', script: '''
                   ls
-                  cat README.rst'''
+                  cat README.md'''
       }else{
         bat label: '', script: '''
                    dir
-                   type README.rst'''
+                   type README.md'''
       }
     }
   }
