@@ -31,8 +31,8 @@ try{
       if (isUnix()){
         sh label: '', script: '''
                   ls
-		  content=$(curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md)
-		  grep -o "https:" content > url_file
+		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
+		  grep -o "https" READMEcontent > url_file
 		  echo url_file'''
       }else{
         bat label: '', script: '''
