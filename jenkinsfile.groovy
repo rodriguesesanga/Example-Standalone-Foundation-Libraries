@@ -33,7 +33,7 @@ try{
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
 		  grep -o "https" READMEcontent > url_file
-		  echo url_file'''
+		  cat url_file'''
       }else{
         bat label: '', script: '''
                    dir
