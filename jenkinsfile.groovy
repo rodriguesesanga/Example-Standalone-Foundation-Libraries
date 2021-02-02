@@ -40,6 +40,9 @@ try{
                    type README.md'''
       }
     }
+    post{
+    	cleanWs()
+	}
   }
  }
 }catch (e) {
