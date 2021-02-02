@@ -33,7 +33,7 @@ try{
         sh label: '', script: '''
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
-		  grep -o "https://[a-zA-Z|0-9|/|.|-|_]*" READMEcontent >> url_file
+		  grep -o "https://[A-Za-z|0-9|/|.|-|_]*" READMEcontent >> url_file
 		  cat url_file'''
       }else{
         bat label: '', script: '''
