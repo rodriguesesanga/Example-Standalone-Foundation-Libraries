@@ -32,7 +32,8 @@ try{
         sh label: '', script: '''
                   ls
 		  content=$(curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md)
-		  echo $content'''
+		  grep -o "https:" content > url_file
+		  echo url_file'''
       }else{
         bat label: '', script: '''
                    dir
