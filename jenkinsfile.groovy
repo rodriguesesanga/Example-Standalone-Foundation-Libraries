@@ -36,9 +36,9 @@ try{
 		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
 		  for line in $(cat url_file_http_less);
 		  do
-		  	echo "https://github.com/MicroEJ$line" >> url_file
+		  	echo "https://github.com$line" >> url_file
                   done
-		  grep -o "https://[A-Za-z0-9|/|.|-|_]*" READMEcontent >> url_file
+		  grep -o "https://[A-Za-z;0-9|/|.|-|_]*" READMEcontent >> url_file
 		  cat url_file'''
       }else{
         bat label: '', script: '''
