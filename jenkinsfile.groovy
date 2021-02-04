@@ -32,14 +32,11 @@ try{
     	sh label: '', script: '''
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
-		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
-		  for line in $(cat url_file_http_less);
+		  sed -n \'s/.*href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
+		  grep "/ " url_file_http_less >> url
+		  for line in $(cat url);
 		  do
-		  	cat url_file_http_less
-		  	if [[ "$line" = "/"* ]]
-			then
-				echo "https://github.com$line" >> url_file
-			fi
+		  	echo "https://github.com$line" >> url_file
                   done
 		  grep -o "https://[A-Za-z;0-9|/|.|-|_]*" READMEcontent >> url_file
 		  cat url_file'''
