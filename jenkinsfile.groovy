@@ -33,7 +33,7 @@ try{
         sh label: '', script: '''
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
-		  sed -n \'s/.*href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file
+		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file
 		  grep -o "https://[A-Za-z0-9|/|.|-|_]*" READMEcontent >> url_file
 		  cat url_file'''
       }else{
