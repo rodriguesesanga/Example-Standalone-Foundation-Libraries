@@ -33,7 +33,8 @@ try{
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
 		  sed -n \'s/.*href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
-		  grep "/ " url_file_http_less >> url
+		  cat url_file_http_less
+		  grep "/ " url_file_http_less >> url_without
 		  for line in $(cat url);
 		  do
 		  	echo "https://github.com$line" >> url_file
