@@ -35,7 +35,7 @@ try{
 		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
 		  for line in $(cat url_file_http_less);
 		  do
-		  	if [[ $line =~ ^/* ]];
+		  	if [[ $line = /* ]];
 			then
 				echo "https://github.com$line" >> url_file
 			fi
