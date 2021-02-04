@@ -34,7 +34,7 @@ try{
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
 		  sed -n \'s/.*href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
 		  cat url_file_http_less
-		  grep -o "/ " url_file_http_less >> url_without
+		  grep -o "/" url_file_http_less >> url_without
 		  for line in $(cat url_without);
 		  do
 		  	echo "https://github.com$line" >> url_file
