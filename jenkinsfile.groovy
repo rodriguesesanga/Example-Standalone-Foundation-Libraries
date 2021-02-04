@@ -22,7 +22,7 @@ def failed_message(link_gif){
 
 try{
  timestamps{
-  node ('public'){
+  node ('linux64'){
     stage ('CheckOut'){
         nodeInfo()
 	cleanWs()
@@ -33,7 +33,11 @@ try{
         sh label: '', script: '''
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
-		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file
+		  sed -n \'s/.*<li><a href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
+		  for line in $(cat url_file_http_less);
+		  do
+		  	echo -n "https://github.com/MicroEJ/$line" >> url_file
+                  done
 		  grep -o "https://[A-Za-z0-9|/|.|-|_]*" READMEcontent >> url_file
 		  cat url_file'''
       }else{
