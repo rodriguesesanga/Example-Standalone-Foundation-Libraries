@@ -33,12 +33,14 @@ try{
                   ls
 		  curl -L https://github.com/rodriguesesanga/Example-Standalone-Foundation-Libraries/blob/feature1/README.md > READMEcontent
 		  sed -n \'s/.*href="\\([^"]*\\).*/\\1/p\' READMEcontent > url_file_http_less
-		  grep -o "^/[A-Za-z;0-9|/|.|-|_]*" url_file_http_less >> url_without
+		  cat url_file_http_less
+		  grep -o "^/[a-zA-Z0-9./?=_%:-]*" url_file_http_less | sort -u >> url_without
+		  cat url_without
 		  for line in $(cat url_without);
 		  do
 		  	echo "https://github.com$line" >> url_file
                   done
-		  grep -o "https://[A-Za-z;0-9|/|.|-|_]*" READMEcontent >> url_file
+		  grep -o "https://[a-zA-Z0-9./?=_%:-]*" READMEcontent | sort -u >> url_file
 		  cat url_file'''
     }
   }
