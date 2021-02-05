@@ -41,7 +41,6 @@ try{
 		  grep -o "https://[a-zA-Z0-9./?=_%:-]*" READMEcontent | sort -u >> url_file
 		  grep -o "http://[a-zA-Z0-9./?=_%:-]*" READMEcontent | sort -u >> url_file
 		  cat url_file
-		  tableau=()
 		  for line in $(cat url_file);
 		  do
 		  	if [ "$(curl -o /dev/null -s -w '%{http_code}\n' $line)" -ne "200" ];
