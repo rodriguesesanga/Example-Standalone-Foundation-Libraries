@@ -38,7 +38,7 @@ try{
 		  do
 		  	echo "https://github.com$line" >> url_file
                   done
-		  grep -o "https://[a-zA-Z0-9./?=_%:-]*" READMEcontent | sort -u >> url_file
+		  grep -o "(http|https)://[a-zA-Z0-9./?=_%:-]*" READMEcontent | sort -u >> url_file
 		  cat url_file'''
     }
   }
