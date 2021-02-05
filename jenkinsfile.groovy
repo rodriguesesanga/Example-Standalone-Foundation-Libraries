@@ -43,11 +43,19 @@ try{
 		  cat url_file
 		  for line in $(cat url_file);
 		  do
-		  	if [ "$(curl -o /dev/null -s -w '%{http_code}\n' $line)" -ne "200" ];
+		  	if [ "$(curl -o /dev/null -s -w '%{http_code}\n' $line)" = "404" ];
 			then
-				echo $line >> wrong_url
+				echo $line >> error_url
+			elif [ "$(curl -o /dev/null -s -w '%{http_code}\n' $line)" -ne "200" ];
+			then
+				echo $line >> warning_url
+			else
+				echo "$line : correct URL"
+				
 			fi
-		  done'''
+		  done
+		  cat error_url'''
+
     }
   }
  }
