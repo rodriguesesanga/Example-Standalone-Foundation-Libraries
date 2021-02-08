@@ -57,7 +57,7 @@ try{
 		  done'''
     }
     stage('Looking URLs error') {
-	def contentFile = readFile.readFileLineByLine('error_url.txt')
+	def contentFile = readFile('error_url.txt')
 	println("${contentFile}")
 
     }
