@@ -11,7 +11,7 @@ def error_url_message(file){
   <h2 align="center"><i><code style="color:blue">${env.JOB_NAME}</code></i></h2>
   </br>
   <h2 align="center">This error is due to: <h2>
-  <p style="color: blue" align="center">The following links send 404 error: ${file}</p>
+  <iframe style="color: blue" align="center" src="${file}"></iframe>
   <p style="color: red" align="center"><strong>Click on the link below to open the build.</strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
   </body>
