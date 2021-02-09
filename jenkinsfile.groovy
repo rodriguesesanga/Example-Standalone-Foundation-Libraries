@@ -6,16 +6,16 @@ def error_url_message(file){
   <!DOCTYPE html>
   <html>
   <body style='font-family: sans-serif;'>
-  <h1 align="center">&#x1F6A8; &#x1F6A8; &#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8;&#x1F6A8;&#x1F6A8 </h1>
+  <h1 align="center">&#x1F6A8; URL message error 404 <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> &#x1F6A8 </h1>
   </br>
-  <h2 align="center">This failure comes from the running of that JOB on the label:  <i style="color: blue">${NODE_NAME}</i><h2>
-  <p style="color: red" align="center">The following links send 404 error: ${file}</p>
-  <p style="color: red" align="center"><strong>Click on the link below to find out them </strong></p>
-  <p align="center">&#X1F517;<a href=${env.BUILD_URL}</a></p>
+  <h2 align="center">This error is due to: <h2>
+  <p style="color: black" align="center">The following links send 404 error: ${file}</p>
+  <p style="color: red" align="center"><strong>Click on the link below to find out these links.</strong></p>
+  <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
   </body>
   </html>
   """
-  emailext body: "${body}" ,mimeType: 'text/html',subject: "Test links failed on: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-FAILURE", to: 'rodrigue.sesanga@microej.com'
+  emailext body: "${body}" ,mimeType: 'text/html',subject: "Test links failed on: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-ERROR", to: 'rodrigue.sesanga@microej.com'
 }
 
 def failed_build_message(){
@@ -23,12 +23,11 @@ def failed_build_message(){
   <!DOCTYPE html>
   <html>
   <body style='font-family: sans-serif;'>
-  <h1 align="center">&#x1F6A8; &#x1F6A8; &#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8;&#x1F6A8;&#x1F6A8 </h1>
+  <h1 align="center">&#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8 </h1>
   </br>
   <h2 align="center">This failure is due to: <h2>
   <p style="color: red" align="center"><strong>Click on the link below to find out cause and try to fix it </strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
-
   <p align="center"><img src="https://www.microej.com/wp-content/uploads/2019/02/Product_SDK_mascotsdk.png" height="400" width="400"></p>
   </body>
   </html>
