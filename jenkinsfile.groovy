@@ -57,7 +57,7 @@ try{
     }
     stage('Looking URLs error') {
 	def contentErrorFile = readFile('error_url.txt')
-	if (!isNull(contentErrorFile){
+	if (!isNull(contentErrorFile)){
 		println("${contentFile}")
 		currentBuild.result = "FAILURE"
 	}
