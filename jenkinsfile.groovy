@@ -56,9 +56,9 @@ try{
 		  done'''
     }
     stage('Looking URLs error') {
-	def contentErrorFile = readFile('error_url.txt')
-	if (!isNull(contentErrorFile)){
-		println("${contentFile}")
+	contentErrorFile = readFile('error_url.txt')
+	if (contentErrorFile.contains('http')){
+		println("${contentErrorFile}")
 		currentBuild.result = "FAILURE"
 	}
 
