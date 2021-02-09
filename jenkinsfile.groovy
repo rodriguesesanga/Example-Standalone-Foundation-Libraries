@@ -1,7 +1,7 @@
 def nodeInfo() {
   println "Node: '${env.NODE_NAME}'"
 }
-def failed_message(file){
+def error_url_message(file){
   body="""
   <!DOCTYPE html>
   <html>
@@ -17,6 +17,25 @@ def failed_message(file){
   """
   emailext body: "${body}" ,mimeType: 'text/html',subject: "Test links failed on: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-FAILURE", to: 'rodrigue.sesanga@microej.com'
 }
+
+def failed_build_message(){
+  body="""
+  <!DOCTYPE html>
+  <html>
+  <body style='font-family: sans-serif;'>
+  <h1 align="center">&#x1F6A8; &#x1F6A8; &#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8;&#x1F6A8;&#x1F6A8 </h1>
+  </br>
+  <h2 align="center">This failure is due to: <h2>
+  <p style="color: red" align="center"><strong>Click on the link below to find out cause and try to fix it </strong></p>
+  <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
+
+  <p align="center"><img src="https://www.microej.com/wp-content/uploads/2019/02/Product_SDK_mascotsdk.png" height="400" width="400"></p>
+  </body>
+  </html>
+  """
+  emailext body: "${body}" ,mimeType: 'text/html',subject: "Build failed in Jenkins: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-FAILURE", to: 'testsuite-bench-notifications@microej.com'
+}
+
 
 try{
  timestamps{
@@ -59,7 +78,7 @@ try{
 	contentErrorFile = readFile('error_url.txt')
 	if (contentErrorFile.contains('http')){
 		println("${contentErrorFile}")
-		currentBuild.result = "FAILURE"
+		error_url_message("${contentErrorFile}")
 	}
 
     }
@@ -67,5 +86,6 @@ try{
  }
 }catch (e) {
   // In this case, the build failed
-  failed_message("${contentErrorFile}")
+  currentBuild.result = "FAILURE"
+  failed_build_message()
 }
