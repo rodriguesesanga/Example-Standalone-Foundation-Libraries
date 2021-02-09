@@ -6,11 +6,13 @@ def error_url_message(file){
   <!DOCTYPE html>
   <html>
   <body style='font-family: sans-serif;'>
-  <h1 align="center">&#x1F6A8; URL message error 404 <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> &#x1F6A8 </h1>
+  <h1 align="center">&#x1F6A8; URL message error 404 &#x1F6A8</h1>
+  <h2 align="center">in </h2>
+  <h2 align="center"><i><code style="color:blue">${env.JOB_NAME}</code></i></h2>
   </br>
   <h2 align="center">This error is due to: <h2>
-  <p style="color: black" align="center">The following links send 404 error: ${file}</p>
-  <p style="color: red" align="center"><strong>Click on the link below to find out these links.</strong></p>
+  <p style="color: blue" align="center">The following links send 404 error: ${file}</p>
+  <p style="color: red" align="center"><strong>Click on the link below to open the build.</strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
   </body>
   </html>
@@ -23,7 +25,9 @@ def failed_build_message(){
   <!DOCTYPE html>
   <html>
   <body style='font-family: sans-serif;'>
-  <h1 align="center">&#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> in <i><code>${env.JOB_NAME}</code></i> failed! &#x1F6A8 </h1>
+  <h1 align="center">&#x1F6A8; Build <code style="color:blue">#${env.BUILD_NUMBER}</code> failed !</h1>
+  <h2 align="center">in </h2>
+  <h2 align="center"><i><code style="color:blue">${env.JOB_NAME}</code></i></h2>
   </br>
   <h2 align="center">This failure is due to: <h2>
   <p style="color: red" align="center"><strong>Click on the link below to find out cause and try to fix it </strong></p>
