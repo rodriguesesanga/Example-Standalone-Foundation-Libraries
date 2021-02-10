@@ -11,7 +11,7 @@ def error_url_message(file){
   <h2 align="center"><i><code style="color:blue">${env.JOB_NAME}</code></i></h2>
   </br>
   <h2 align="center">This error is due to: <h2>
-  <iframe style="color: blue" align="center" src="${file}"></iframe>
+  <object align="center" data="${file}" height=400 width=800 />
   <p style="color: red" align="center"><strong>Click on the link below to open the build.</strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
   </body>
@@ -81,7 +81,7 @@ try{
 	contentErrorFile = readFile('error_url.txt')
 	if (contentErrorFile.contains('http')){
 		println("${contentErrorFile}")
-		error_url_message("${contentErrorFile}")
+		error_url_message('error_url.txt')
 	}
 
     }
