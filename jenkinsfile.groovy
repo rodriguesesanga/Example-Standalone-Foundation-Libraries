@@ -81,7 +81,7 @@ try{
 	contentErrorFile = readFile('error_url.txt')
 	if (contentErrorFile.contains('http')){
 		println("${contentErrorFile}")
-		error_url_message('error_url.txt')
+		error_url_message(error_url.txt)
 	}
 
     }
