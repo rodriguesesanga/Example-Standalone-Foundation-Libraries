@@ -11,7 +11,7 @@ def error_url_message(file){
   <h2 align="center"><i><code style="color:blue">${env.JOB_NAME}</code></i></h2>
   </br>
   <h2 align="center">This error is due to: <h2>
-  <object align="center" data="${file}" height=400 width=800 />
+  <ul><?php $fileLines=file("${file}"); $ressource = fopen('${file}', 'rb'); for($i=0;$i<count($fileLines;$i++){ ?> <li> <?php echo 'Links : ' .fgets($ressource). '<br>'; ?></li></ul>
   <p style="color: red" align="center"><strong>Click on the link below to open the build.</strong></p>
   <p align="center">&#X1F517;<a href=${env.BUILD_URL}><code>${env.JOB_NAME}</code><code>#${env.BUILD_NUMBER}</code></a></p>
   </body>
