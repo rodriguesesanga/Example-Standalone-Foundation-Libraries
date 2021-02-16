@@ -36,7 +36,7 @@ def failed_build_message(){
   </body>
   </html>
   """
-  emailext body: "${body}" ,mimeType: 'text/html',subject: "Build failed in Jenkins: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-FAILURE", to: 'testsuite-bench-notifications@microej.com'
+  emailext body: "${body}" ,mimeType: 'text/html',subject: "Build failed in Jenkins: ${env.JOB_NAME}, #${env.BUILD_NUMBER}-FAILURE", to: 'rodrigue.sesanga@microej.com'
 }
 
 
@@ -81,7 +81,7 @@ try{
 	contentErrorFile = readFile('error_url.txt')
 	if (contentErrorFile.contains('http')){
 		println("${contentErrorFile}")
-		error_url_message(error_url.txt)
+		error_url_message('error_url.txt')
 	}
 
     }
@@ -91,4 +91,4 @@ try{
   // In this case, the build failed
   currentBuild.result = "FAILURE"
   failed_build_message()
-}
+}i
